@@ -15,6 +15,7 @@ const App = () => {
       loop: true,
       controls: true,
       autoplay: true,
+      muted: false,
       style: {
         width: "100%",
         height: "100%",
@@ -34,6 +35,6 @@ const App = () => {
 };
 createRoot(document.getElementById("app")).render(/* @__PURE__ */ jsxDEV(App, {}, void 0, false, {
   fileName: "<stdin>",
-  lineNumber: 28,
+  lineNumber: 29,
   columnNumber: 51
 }));

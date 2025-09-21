@@ -639,7 +639,7 @@ const NullweaveIntro = () => {
                 lineNumber: 539,
                 columnNumber: 9
               }),
-              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Particles, {}, void 0, false, {
+              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame - 30, durationInFrames: 30, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./whoosh.mp3", volume: 0.3 }, void 0, false, {
                 fileName: "<stdin>",
                 lineNumber: 542,
                 columnNumber: 11
@@ -648,9 +648,40 @@ const NullweaveIntro = () => {
                 lineNumber: 541,
                 columnNumber: 9
               }),
-              /* @__PURE__ */ jsxDEV(ImpactObject, {}, void 0, false, {
+              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./impact.mp3", volume: 0.4 }, void 0, false, {
+                fileName: "<stdin>",
+                lineNumber: 545,
+                columnNumber: 11
+              }) }, void 0, false, {
                 fileName: "<stdin>",
                 lineNumber: 544,
+                columnNumber: 9
+              }),
+              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./shatter.mp3", volume: 0.3 }, void 0, false, {
+                fileName: "<stdin>",
+                lineNumber: 548,
+                columnNumber: 11
+              }) }, void 0, false, {
+                fileName: "<stdin>",
+                lineNumber: 547,
+                columnNumber: 9
+              }),
+              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame + 8, durationInFrames: 42, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./tumble.mp3", volume: 0.2 }, void 0, false, {
+                fileName: "<stdin>",
+                lineNumber: 551,
+                columnNumber: 11
+              }) }, void 0, false, {
+                fileName: "<stdin>",
+                lineNumber: 550,
+                columnNumber: 9
+              }),
+              /* @__PURE__ */ jsxDEV(Sequence, { from: studioFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./studio_reveal.mp3", volume: 0.4 }, void 0, false, {
+                fileName: "<stdin>",
+                lineNumber: 554,
+                columnNumber: 11
+              }) }, void 0, false, {
+                fileName: "<stdin>",
+                lineNumber: 553,
                 columnNumber: 9
               })
             ]
@@ -660,83 +691,6 @@ const NullweaveIntro = () => {
           {
             fileName: "<stdin>",
             lineNumber: 530,
-            columnNumber: 7
-          }
-        ),
-        /* @__PURE__ */ jsxDEV(
-          Audio,
-          {
-            src: "./whoosh.mp3",
-            startFrom: impactFrame - 30,
-            endAt: impactFrame,
-            volume: 0.3
-          },
-          void 0,
-          false,
-          {
-            fileName: "<stdin>",
-            lineNumber: 547,
-            columnNumber: 7
-          }
-        ),
-        /* @__PURE__ */ jsxDEV(
-          Audio,
-          {
-            src: "./impact.mp3",
-            startFrom: impactFrame,
-            volume: 0.4
-          },
-          void 0,
-          false,
-          {
-            fileName: "<stdin>",
-            lineNumber: 553,
-            columnNumber: 7
-          }
-        ),
-        /* @__PURE__ */ jsxDEV(
-          Audio,
-          {
-            src: "./shatter.mp3",
-            startFrom: impactFrame,
-            volume: 0.3
-          },
-          void 0,
-          false,
-          {
-            fileName: "<stdin>",
-            lineNumber: 558,
-            columnNumber: 7
-          }
-        ),
-        /* @__PURE__ */ jsxDEV(
-          Audio,
-          {
-            src: "./tumble.mp3",
-            startFrom: impactFrame + 8,
-            endAt: impactFrame + 50,
-            volume: 0.2
-          },
-          void 0,
-          false,
-          {
-            fileName: "<stdin>",
-            lineNumber: 563,
-            columnNumber: 7
-          }
-        ),
-        /* @__PURE__ */ jsxDEV(
-          Audio,
-          {
-            src: "./studio_reveal.mp3",
-            startFrom: studioFrame,
-            volume: 0.4
-          },
-          void 0,
-          false,
-          {
-            fileName: "<stdin>",
-            lineNumber: 569,
             columnNumber: 7
           }
         )
