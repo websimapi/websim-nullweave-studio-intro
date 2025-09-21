@@ -471,7 +471,10 @@ const NullweaveIntro = () => {
           AbsoluteFill,
           {
             style: {
-              transform: `scale(${zoom}) rotateY(${pan}deg)`
+              transform: `scale(${zoom}) rotateY(${pan}deg)`,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
             },
             children: [
               /* @__PURE__ */ jsxDEV("div", { style: {
@@ -482,35 +485,35 @@ const NullweaveIntro = () => {
               }, children: [
                 /* @__PURE__ */ jsxDEV(NullweaveText, {}, void 0, false, {
                   fileName: "<stdin>",
-                  lineNumber: 432,
+                  lineNumber: 435,
                   columnNumber: 6
                 }),
                 /* @__PURE__ */ jsxDEV(Sequence, { from: studioFrame, children: /* @__PURE__ */ jsxDEV(StudioText, {}, void 0, false, {
                   fileName: "<stdin>",
-                  lineNumber: 434,
+                  lineNumber: 437,
                   columnNumber: 7
                 }) }, void 0, false, {
                   fileName: "<stdin>",
-                  lineNumber: 433,
+                  lineNumber: 436,
                   columnNumber: 6
                 })
               ] }, void 0, true, {
                 fileName: "<stdin>",
-                lineNumber: 426,
+                lineNumber: 429,
                 columnNumber: 5
               }),
               /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Particles, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 439,
+                lineNumber: 442,
                 columnNumber: 6
               }) }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 438,
+                lineNumber: 441,
                 columnNumber: 5
               }),
               /* @__PURE__ */ jsxDEV(ImpactObject, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 441,
+                lineNumber: 444,
                 columnNumber: 5
               })
             ]
@@ -535,7 +538,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 444,
+            lineNumber: 447,
             columnNumber: 4
           }
         ),
@@ -550,7 +553,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 450,
+            lineNumber: 453,
             columnNumber: 4
           }
         ),
@@ -565,7 +568,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 455,
+            lineNumber: 458,
             columnNumber: 4
           }
         ),
@@ -581,7 +584,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 460,
+            lineNumber: 463,
             columnNumber: 4
           }
         ),
@@ -596,7 +599,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 466,
+            lineNumber: 469,
             columnNumber: 4
           }
         )
