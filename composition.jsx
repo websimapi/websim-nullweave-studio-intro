@@ -232,7 +232,7 @@ const NullweaveText = () => {
           let letterTransform = "none";
           if (isFallingL) {
             const rel = frame - impactFrame;
-            const preFallY = interpolate(frame, [impactFrame - 20, impactFrame], [-220, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+            const preFallY = 0;
             const dropY = interpolate(rel, [0, 10, 40, 80], [0, 40, 240, 900], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
             const rotZ = interpolate(rel, [0, 80], [0, 25], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
             const shiftX = interpolate(rel, [0, 80], [0, 20], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
@@ -404,11 +404,11 @@ const ImpactObject = () => {
   const rel = frame - impactFrame;
   const hitX = -25;
   const preX = interpolate(frame, [20, impactFrame], [-100, hitX], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const preY = interpolate(frame, [20, impactFrame], [-500, -10], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const preY = interpolate(frame, [20, impactFrame], [-120, -20], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const postX = hitX + Math.max(0, rel) * 7;
   const amp0 = 120;
   const decay = Math.exp(-Math.max(0, rel) / 60);
-  const postY = -10 - Math.abs(Math.sin(Math.max(0, rel) * 0.18 * Math.PI)) * amp0 * decay;
+  const postY = -40 - Math.abs(Math.sin(Math.max(0, rel) * 0.18 * Math.PI)) * amp0 * decay;
   const x = frame < impactFrame ? preX : postX;
   const y = frame < impactFrame ? preY : postY;
   return /* @__PURE__ */ jsxDEV(
@@ -423,7 +423,8 @@ const ImpactObject = () => {
         boxShadow: "0 0 30px rgba(0,255,255,0.9), 0 0 60px rgba(159,0,255,0.7)",
         opacity: 1,
         transform: `translate(${x}px, ${y}px)`,
-        filter: "blur(0.5px)"
+        filter: "blur(0.5px)",
+        zIndex: 5
       }
     },
     void 0,
@@ -539,7 +540,7 @@ const StudioText = () => {
               false,
               {
                 fileName: "<stdin>",
-                lineNumber: 460,
+                lineNumber: 461,
                 columnNumber: 13
               }
             );
@@ -549,7 +550,7 @@ const StudioText = () => {
         false,
         {
           fileName: "<stdin>",
-          lineNumber: 424,
+          lineNumber: 425,
           columnNumber: 7
         }
       )
@@ -558,7 +559,7 @@ const StudioText = () => {
     false,
     {
       fileName: "<stdin>",
-      lineNumber: 413,
+      lineNumber: 414,
       columnNumber: 5
     }
   );
@@ -578,17 +579,17 @@ const FontLoader = ({ children }) => {
   }, [handle]);
   return /* @__PURE__ */ jsxDEV(Fragment, { children }, void 0, false, {
     fileName: "<stdin>",
-    lineNumber: 498,
+    lineNumber: 499,
     columnNumber: 10
   });
 };
 const IntroWithFont = () => /* @__PURE__ */ jsxDEV(FontLoader, { children: /* @__PURE__ */ jsxDEV(NullweaveIntro, {}, void 0, false, {
   fileName: "<stdin>",
-  lineNumber: 503,
+  lineNumber: 504,
   columnNumber: 5
 }) }, void 0, false, {
   fileName: "<stdin>",
-  lineNumber: 502,
+  lineNumber: 503,
   columnNumber: 3
 });
 const NullweaveIntro = () => {
@@ -614,7 +615,7 @@ const NullweaveIntro = () => {
       children: [
         /* @__PURE__ */ jsxDEV(Background, {}, void 0, false, {
           fileName: "<stdin>",
-          lineNumber: 530,
+          lineNumber: 531,
           columnNumber: 7
         }),
         /* @__PURE__ */ jsxDEV(
@@ -629,66 +630,66 @@ const NullweaveIntro = () => {
             children: [
               /* @__PURE__ */ jsxDEV("div", { style: { position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%) translateX(-130px)", pointerEvents: "none" }, children: /* @__PURE__ */ jsxDEV(ImpactObject, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 540,
+                lineNumber: 541,
                 columnNumber: 11
               }) }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 539,
+                lineNumber: 540,
                 columnNumber: 9
               }),
               /* @__PURE__ */ jsxDEV(NullweaveText, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 542,
+                lineNumber: 543,
                 columnNumber: 9
               }),
               /* @__PURE__ */ jsxDEV(StudioText, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 543,
+                lineNumber: 544,
                 columnNumber: 9
               }),
               /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame - 30, durationInFrames: 30, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./whoosh.mp3", volume: 0.3 }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 546,
+                lineNumber: 547,
                 columnNumber: 11
               }) }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 545,
+                lineNumber: 546,
                 columnNumber: 9
               }),
               /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./impact.mp3", volume: 0.4 }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 549,
+                lineNumber: 550,
                 columnNumber: 11
               }) }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 548,
+                lineNumber: 549,
                 columnNumber: 9
               }),
               /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./shatter.mp3", volume: 0.3 }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 552,
+                lineNumber: 553,
                 columnNumber: 11
               }) }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 551,
+                lineNumber: 552,
                 columnNumber: 9
               }),
               /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame + 8, durationInFrames: 42, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./tumble.mp3", volume: 0.2 }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 555,
+                lineNumber: 556,
                 columnNumber: 11
               }) }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 554,
+                lineNumber: 555,
                 columnNumber: 9
               }),
               /* @__PURE__ */ jsxDEV(Sequence, { from: studioFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./studio_reveal.mp3", volume: 0.4 }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 558,
+                lineNumber: 559,
                 columnNumber: 11
               }) }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 557,
+                lineNumber: 558,
                 columnNumber: 9
               })
             ]
@@ -697,7 +698,7 @@ const NullweaveIntro = () => {
           true,
           {
             fileName: "<stdin>",
-            lineNumber: 531,
+            lineNumber: 532,
             columnNumber: 7
           }
         )
@@ -707,7 +708,7 @@ const NullweaveIntro = () => {
     true,
     {
       fileName: "<stdin>",
-      lineNumber: 525,
+      lineNumber: 526,
       columnNumber: 5
     }
   );
