@@ -11,7 +11,7 @@ const App = () => {
       durationInFrames: 180,
       fps: 30,
       compositionWidth: 1080,
-      compositionHeight: 1080,
+      compositionHeight: 1920,
       loop: true,
       controls: true,
       autoplay: true,

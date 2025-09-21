@@ -377,6 +377,7 @@ const ImpactObject = () => {
 const StudioText = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const fadeInDuration = 30;
   const progress = spring({
     frame,
     fps,
@@ -388,7 +389,9 @@ const StudioText = () => {
     durationInFrames: 15,
     config: { damping: 10 }
   });
-  const opacity = interpolate(progress, [0, 0.5], [0, 1]);
+  const opacity = interpolate(frame, [0, fadeInDuration], [0, 1], {
+    extrapolateRight: "clamp"
+  });
   const scale = interpolate(progress, [0, 1], [0.8, 1]);
   const glowRadius = interpolate(flash, [0, 0.5, 1], [40, 80, 20]);
   const glowOpacity = interpolate(flash, [0, 0.5, 1], [0, 1, 0.7]);
@@ -421,7 +424,7 @@ const StudioText = () => {
         false,
         {
           fileName: "<stdin>",
-          lineNumber: 367,
+          lineNumber: 373,
           columnNumber: 4
         }
       )
@@ -430,7 +433,7 @@ const StudioText = () => {
     false,
     {
       fileName: "<stdin>",
-      lineNumber: 361,
+      lineNumber: 367,
       columnNumber: 3
     }
   );
@@ -461,7 +464,7 @@ const NullweaveIntro = () => {
       children: [
         /* @__PURE__ */ jsxDEV(Background, {}, void 0, false, {
           fileName: "<stdin>",
-          lineNumber: 414,
+          lineNumber: 420,
           columnNumber: 4
         }),
         /* @__PURE__ */ jsxDEV(
@@ -481,30 +484,30 @@ const NullweaveIntro = () => {
                 children: [
                   /* @__PURE__ */ jsxDEV(NullweaveText, {}, void 0, false, {
                     fileName: "<stdin>",
-                    lineNumber: 427,
+                    lineNumber: 433,
                     columnNumber: 6
                   }),
                   /* @__PURE__ */ jsxDEV(Sequence, { from: studioFrame, children: /* @__PURE__ */ jsxDEV(StudioText, {}, void 0, false, {
                     fileName: "<stdin>",
-                    lineNumber: 429,
+                    lineNumber: 435,
                     columnNumber: 7
                   }) }, void 0, false, {
                     fileName: "<stdin>",
-                    lineNumber: 428,
+                    lineNumber: 434,
                     columnNumber: 6
                   }),
                   /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Particles, {}, void 0, false, {
                     fileName: "<stdin>",
-                    lineNumber: 433,
+                    lineNumber: 439,
                     columnNumber: 7
                   }) }, void 0, false, {
                     fileName: "<stdin>",
-                    lineNumber: 432,
+                    lineNumber: 438,
                     columnNumber: 6
                   }),
                   /* @__PURE__ */ jsxDEV(ImpactObject, {}, void 0, false, {
                     fileName: "<stdin>",
-                    lineNumber: 435,
+                    lineNumber: 441,
                     columnNumber: 6
                   })
                 ]
@@ -513,7 +516,7 @@ const NullweaveIntro = () => {
               true,
               {
                 fileName: "<stdin>",
-                lineNumber: 420,
+                lineNumber: 426,
                 columnNumber: 5
               }
             )
@@ -522,7 +525,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 415,
+            lineNumber: 421,
             columnNumber: 4
           }
         ),
@@ -538,7 +541,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 439,
+            lineNumber: 445,
             columnNumber: 4
           }
         ),
@@ -553,7 +556,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 445,
+            lineNumber: 451,
             columnNumber: 4
           }
         ),
@@ -568,7 +571,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 450,
+            lineNumber: 456,
             columnNumber: 4
           }
         ),
@@ -584,7 +587,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 455,
+            lineNumber: 461,
             columnNumber: 4
           }
         ),
@@ -599,7 +602,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 461,
+            lineNumber: 467,
             columnNumber: 4
           }
         )
@@ -609,7 +612,7 @@ const NullweaveIntro = () => {
     true,
     {
       fileName: "<stdin>",
-      lineNumber: 409,
+      lineNumber: 415,
       columnNumber: 3
     }
   );
