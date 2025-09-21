@@ -8,10 +8,10 @@ const App = () => {
     Player,
     {
       component: NullweaveIntro,
-      durationInFrames: 180,
+      durationInFrames: 150,
       fps: 30,
-      compositionWidth: 1080,
-      compositionHeight: 1920,
+      compositionWidth: 720,
+      compositionHeight: 1280,
       loop: true,
       controls: true,
       autoplay: true,
