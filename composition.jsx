@@ -629,26 +629,26 @@ const NullweaveIntro = () => {
               alignItems: "center"
             },
             children: [
-              /* @__PURE__ */ jsxDEV(NullweaveText, {}, void 0, false, {
+              /* @__PURE__ */ jsxDEV("div", { style: { position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%) translateX(-130px)", pointerEvents: "none" }, children: /* @__PURE__ */ jsxDEV(ImpactObject, {}, void 0, false, {
+                fileName: "<stdin>",
+                lineNumber: 539,
+                columnNumber: 11
+              }) }, void 0, false, {
                 fileName: "<stdin>",
                 lineNumber: 538,
                 columnNumber: 9
               }),
-              /* @__PURE__ */ jsxDEV(StudioText, {}, void 0, false, {
-                fileName: "<stdin>",
-                lineNumber: 539,
-                columnNumber: 9
-              }),
-              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame - 30, durationInFrames: 30, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./whoosh.mp3", volume: 0.3 }, void 0, false, {
-                fileName: "<stdin>",
-                lineNumber: 542,
-                columnNumber: 11
-              }) }, void 0, false, {
+              /* @__PURE__ */ jsxDEV(NullweaveText, {}, void 0, false, {
                 fileName: "<stdin>",
                 lineNumber: 541,
                 columnNumber: 9
               }),
-              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./impact.mp3", volume: 0.4 }, void 0, false, {
+              /* @__PURE__ */ jsxDEV(StudioText, {}, void 0, false, {
+                fileName: "<stdin>",
+                lineNumber: 542,
+                columnNumber: 9
+              }),
+              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame - 30, durationInFrames: 30, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./whoosh.mp3", volume: 0.3 }, void 0, false, {
                 fileName: "<stdin>",
                 lineNumber: 545,
                 columnNumber: 11
@@ -657,7 +657,7 @@ const NullweaveIntro = () => {
                 lineNumber: 544,
                 columnNumber: 9
               }),
-              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./shatter.mp3", volume: 0.3 }, void 0, false, {
+              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./impact.mp3", volume: 0.4 }, void 0, false, {
                 fileName: "<stdin>",
                 lineNumber: 548,
                 columnNumber: 11
@@ -666,7 +666,7 @@ const NullweaveIntro = () => {
                 lineNumber: 547,
                 columnNumber: 9
               }),
-              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame + 8, durationInFrames: 42, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./tumble.mp3", volume: 0.2 }, void 0, false, {
+              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./shatter.mp3", volume: 0.3 }, void 0, false, {
                 fileName: "<stdin>",
                 lineNumber: 551,
                 columnNumber: 11
@@ -675,13 +675,22 @@ const NullweaveIntro = () => {
                 lineNumber: 550,
                 columnNumber: 9
               }),
-              /* @__PURE__ */ jsxDEV(Sequence, { from: studioFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./studio_reveal.mp3", volume: 0.4 }, void 0, false, {
+              /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame + 8, durationInFrames: 42, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./tumble.mp3", volume: 0.2 }, void 0, false, {
                 fileName: "<stdin>",
                 lineNumber: 554,
                 columnNumber: 11
               }) }, void 0, false, {
                 fileName: "<stdin>",
                 lineNumber: 553,
+                columnNumber: 9
+              }),
+              /* @__PURE__ */ jsxDEV(Sequence, { from: studioFrame, children: /* @__PURE__ */ jsxDEV(Audio, { src: "./studio_reveal.mp3", volume: 0.4 }, void 0, false, {
+                fileName: "<stdin>",
+                lineNumber: 557,
+                columnNumber: 11
+              }) }, void 0, false, {
+                fileName: "<stdin>",
+                lineNumber: 556,
                 columnNumber: 9
               })
             ]
