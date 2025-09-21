@@ -399,8 +399,11 @@ const StudioText = () => {
     "div",
     {
       style: {
-        marginTop: "40px",
-        position: "relative"
+        marginTop: "20px",
+        position: "relative",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
       },
       children: /* @__PURE__ */ jsxDEV(
         "div",
@@ -424,7 +427,7 @@ const StudioText = () => {
         false,
         {
           fileName: "<stdin>",
-          lineNumber: 373,
+          lineNumber: 376,
           columnNumber: 4
         }
       )
@@ -464,7 +467,7 @@ const NullweaveIntro = () => {
       children: [
         /* @__PURE__ */ jsxDEV(Background, {}, void 0, false, {
           fileName: "<stdin>",
-          lineNumber: 420,
+          lineNumber: 423,
           columnNumber: 4
         }),
         /* @__PURE__ */ jsxDEV(
@@ -485,35 +488,35 @@ const NullweaveIntro = () => {
               }, children: [
                 /* @__PURE__ */ jsxDEV(NullweaveText, {}, void 0, false, {
                   fileName: "<stdin>",
-                  lineNumber: 435,
+                  lineNumber: 438,
                   columnNumber: 6
                 }),
                 /* @__PURE__ */ jsxDEV(Sequence, { from: studioFrame, children: /* @__PURE__ */ jsxDEV(StudioText, {}, void 0, false, {
                   fileName: "<stdin>",
-                  lineNumber: 437,
+                  lineNumber: 440,
                   columnNumber: 7
                 }) }, void 0, false, {
                   fileName: "<stdin>",
-                  lineNumber: 436,
+                  lineNumber: 439,
                   columnNumber: 6
                 })
               ] }, void 0, true, {
                 fileName: "<stdin>",
-                lineNumber: 429,
+                lineNumber: 432,
                 columnNumber: 5
               }),
               /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Particles, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 442,
+                lineNumber: 445,
                 columnNumber: 6
               }) }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 441,
+                lineNumber: 444,
                 columnNumber: 5
               }),
               /* @__PURE__ */ jsxDEV(ImpactObject, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 444,
+                lineNumber: 447,
                 columnNumber: 5
               })
             ]
@@ -522,7 +525,7 @@ const NullweaveIntro = () => {
           true,
           {
             fileName: "<stdin>",
-            lineNumber: 421,
+            lineNumber: 424,
             columnNumber: 4
           }
         ),
@@ -538,7 +541,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 447,
+            lineNumber: 450,
             columnNumber: 4
           }
         ),
@@ -553,7 +556,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 453,
+            lineNumber: 456,
             columnNumber: 4
           }
         ),
@@ -568,7 +571,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 458,
+            lineNumber: 461,
             columnNumber: 4
           }
         ),
@@ -584,7 +587,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 463,
+            lineNumber: 466,
             columnNumber: 4
           }
         ),
@@ -599,7 +602,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 469,
+            lineNumber: 472,
             columnNumber: 4
           }
         )
@@ -609,7 +612,7 @@ const NullweaveIntro = () => {
     true,
     {
       fileName: "<stdin>",
-      lineNumber: 415,
+      lineNumber: 418,
       columnNumber: 3
     }
   );
