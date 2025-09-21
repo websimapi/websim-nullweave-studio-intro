@@ -16,8 +16,10 @@ const App = () => {
       controls: true,
       autoplay: true,
       style: {
-        maxWidth: "100%",
-        maxHeight: "100%",
+        width: "100%",
+        height: "100%",
+        maxWidth: "100vh",
+        maxHeight: "100vh",
         boxShadow: "0 0 20px rgba(0,0,0,0.5)"
       }
     },
@@ -32,6 +34,6 @@ const App = () => {
 };
 createRoot(document.getElementById("app")).render(/* @__PURE__ */ jsxDEV(App, {}, void 0, false, {
   fileName: "<stdin>",
-  lineNumber: 26,
+  lineNumber: 28,
   columnNumber: 51
 }));
