@@ -163,7 +163,7 @@ const NullweaveText = () => {
       style: {
         display: "flex",
         transform: `translateZ(${introTranslateZ}px)`,
-        opacity: introProgress
+        opacity: 1
       },
       children: [
         /* @__PURE__ */ jsxDEV(NullweaveGradient, {}, void 0, false, {
@@ -175,6 +175,9 @@ const NullweaveText = () => {
           const isFallingL = i === 3;
           const isNul = i < 3;
           const isWeave = i > 3;
+          const letterIn = spring({ frame: frame - i * 3, fps, config: { damping: 200 } });
+          const letterOpacity = interpolate(letterIn, [0, 1], [0, 1]);
+          const letterLift = interpolate(letterIn, [0, 1], [20, 0]);
           let letterTransform = "none";
           if (isFallingL) {
             const fallProgress = spring({
@@ -198,7 +201,7 @@ const NullweaveText = () => {
                   ...textBaseStyle,
                   fontSize: 100,
                   transform: letterTransform,
-                  opacity: fallOpacity,
+                  opacity: fallOpacity * letterOpacity,
                   fill: "url(#nullweaveGradient)",
                   color: "transparent",
                   WebkitTextFillColor: "transparent",
@@ -206,8 +209,9 @@ const NullweaveText = () => {
                   WebkitBackgroundClip: "text",
                   backgroundClip: "text",
                   textShadow: `
-                  0 0 10px rgba(0, 255, 255, 0.7),
-                  0 0 20px rgba(159, 0, 255, 0.5)
+                  0 0 18px rgba(0, 255, 255, 0.9),
+                  0 0 40px rgba(159, 0, 255, 0.8),
+                  0 0 60px rgba(0, 255, 255, 0.6)
                 `
                 },
                 children: char
@@ -216,7 +220,7 @@ const NullweaveText = () => {
               false,
               {
                 fileName: "<stdin>",
-                lineNumber: 173,
+                lineNumber: 177,
                 columnNumber: 7
               }
             );
@@ -257,7 +261,7 @@ const NullweaveText = () => {
               style: {
                 ...textBaseStyle,
                 fontSize: 100,
-                transform: `${letterTransform}`,
+                transform: `translateY(${-letterLift}px) ${letterTransform}`,
                 transformOrigin: i < 3 ? "bottom right" : "bottom left",
                 fill: "url(#nullweaveGradient)",
                 color: "transparent",
@@ -266,10 +270,12 @@ const NullweaveText = () => {
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 textShadow: `
-                0 0 10px rgba(0, 255, 255, 0.7),
-                0 0 20px rgba(159, 0, 255, 0.5),
-                ${isNul ? `0 0 ${20 + glowPulse * 20}px rgba(0, 255, 255, ${glowPulse * 0.5})` : ""}
-              `
+                0 0 18px rgba(0, 255, 255, 0.9),
+                0 0 40px rgba(159, 0, 255, 0.8),
+                0 0 60px rgba(0, 255, 255, 0.7),
+                ${isNul ? `0 0 ${30 + glowPulse * 30}px rgba(0, 255, 255, ${0.6 + glowPulse * 0.4})` : ""}
+              `,
+                opacity: letterOpacity
               },
               children: char
             },
@@ -277,7 +283,7 @@ const NullweaveText = () => {
             false,
             {
               fileName: "<stdin>",
-              lineNumber: 230,
+              lineNumber: 235,
               columnNumber: 6
             }
           );
@@ -333,7 +339,7 @@ const Particle = ({ seed }) => {
     false,
     {
       fileName: "<stdin>",
-      lineNumber: 295,
+      lineNumber: 302,
       columnNumber: 3
     }
   );
@@ -341,11 +347,11 @@ const Particle = ({ seed }) => {
 const Particles = () => {
   return /* @__PURE__ */ jsxDEV(AbsoluteFill, { style: { transform: "translateY(-50px)" }, children: Array.from({ length: 50 }).map((_, i) => /* @__PURE__ */ jsxDEV(Particle, { seed: `particle-${i}` }, i, false, {
     fileName: "<stdin>",
-    lineNumber: 314,
+    lineNumber: 321,
     columnNumber: 5
   })) }, void 0, false, {
     fileName: "<stdin>",
-    lineNumber: 312,
+    lineNumber: 319,
     columnNumber: 3
   });
 };
@@ -375,7 +381,7 @@ const ImpactObject = () => {
     false,
     {
       fileName: "<stdin>",
-      lineNumber: 331,
+      lineNumber: 338,
       columnNumber: 3
     }
   );
@@ -443,7 +449,7 @@ const StudioText = () => {
             const c = palette[i % palette.length];
             return /* @__PURE__ */ jsxDEV("span", { style: { backgroundImage: `linear-gradient(90deg, ${c}, ${palette[(i + 1) % palette.length]})`, backgroundSize: "300% 100%", backgroundPosition: `${(shift + i * 20) % 300}% 0%`, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", textShadow: `0 0 10px ${c}, 0 0 25px ${c}, 0 0 45px ${c}` }, children: ch }, i, false, {
               fileName: "<stdin>",
-              lineNumber: 412,
+              lineNumber: 419,
               columnNumber: 68
             });
           })
@@ -452,7 +458,7 @@ const StudioText = () => {
         false,
         {
           fileName: "<stdin>",
-          lineNumber: 393,
+          lineNumber: 400,
           columnNumber: 4
         }
       )
@@ -461,7 +467,7 @@ const StudioText = () => {
     false,
     {
       fileName: "<stdin>",
-      lineNumber: 382,
+      lineNumber: 389,
       columnNumber: 3
     }
   );
@@ -492,7 +498,7 @@ const NullweaveIntro = () => {
       children: [
         /* @__PURE__ */ jsxDEV(Background, {}, void 0, false, {
           fileName: "<stdin>",
-          lineNumber: 444,
+          lineNumber: 451,
           columnNumber: 4
         }),
         /* @__PURE__ */ jsxDEV(
@@ -507,26 +513,26 @@ const NullweaveIntro = () => {
             children: [
               /* @__PURE__ */ jsxDEV(NullweaveText, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 453,
+                lineNumber: 460,
                 columnNumber: 5
               }),
               /* @__PURE__ */ jsxDEV(StudioText, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 454,
+                lineNumber: 461,
                 columnNumber: 5
               }),
               /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Particles, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 457,
+                lineNumber: 464,
                 columnNumber: 6
               }) }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 456,
+                lineNumber: 463,
                 columnNumber: 5
               }),
               /* @__PURE__ */ jsxDEV(ImpactObject, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 459,
+                lineNumber: 466,
                 columnNumber: 5
               })
             ]
@@ -535,7 +541,7 @@ const NullweaveIntro = () => {
           true,
           {
             fileName: "<stdin>",
-            lineNumber: 445,
+            lineNumber: 452,
             columnNumber: 4
           }
         ),
@@ -551,7 +557,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 462,
+            lineNumber: 469,
             columnNumber: 4
           }
         ),
@@ -566,7 +572,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 468,
+            lineNumber: 475,
             columnNumber: 4
           }
         ),
@@ -581,7 +587,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 473,
+            lineNumber: 480,
             columnNumber: 4
           }
         ),
@@ -597,7 +603,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 478,
+            lineNumber: 485,
             columnNumber: 4
           }
         ),
@@ -612,7 +618,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 484,
+            lineNumber: 491,
             columnNumber: 4
           }
         )
@@ -622,7 +628,7 @@ const NullweaveIntro = () => {
     true,
     {
       fileName: "<stdin>",
-      lineNumber: 439,
+      lineNumber: 446,
       columnNumber: 3
     }
   );
