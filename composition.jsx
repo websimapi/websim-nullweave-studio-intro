@@ -1,4 +1,4 @@
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import React from "react";
 import {
   AbsoluteFill,
@@ -9,7 +9,9 @@ import {
   random,
   Audio,
   staticFile,
-  Sequence
+  Sequence,
+  delayRender,
+  continueRender
 } from "remotion";
 const containerStyle = {
   display: "flex",
@@ -28,25 +30,25 @@ const textBaseStyle = {
 const NullweaveGradient = () => /* @__PURE__ */ jsxDEV("svg", { width: "0", height: "0", children: /* @__PURE__ */ jsxDEV("defs", { children: /* @__PURE__ */ jsxDEV("linearGradient", { id: "nullweaveGradient", x1: "0%", y1: "0%", x2: "0%", y2: "100%", children: [
   /* @__PURE__ */ jsxDEV("stop", { offset: "0%", style: { stopColor: "#9f00ff", stopOpacity: 1 } }, void 0, false, {
     fileName: "<stdin>",
-    lineNumber: 34,
+    lineNumber: 35,
     columnNumber: 9
   }),
   /* @__PURE__ */ jsxDEV("stop", { offset: "100%", style: { stopColor: "#00ffff", stopOpacity: 1 } }, void 0, false, {
     fileName: "<stdin>",
-    lineNumber: 35,
+    lineNumber: 36,
     columnNumber: 9
   })
 ] }, void 0, true, {
   fileName: "<stdin>",
-  lineNumber: 33,
+  lineNumber: 34,
   columnNumber: 7
 }) }, void 0, false, {
   fileName: "<stdin>",
-  lineNumber: 32,
+  lineNumber: 33,
   columnNumber: 5
 }) }, void 0, false, {
   fileName: "<stdin>",
-  lineNumber: 31,
+  lineNumber: 32,
   columnNumber: 3
 });
 const StreamParticle = ({ seed }) => {
@@ -80,7 +82,7 @@ const StreamParticle = ({ seed }) => {
     false,
     {
       fileName: "<stdin>",
-      lineNumber: 60,
+      lineNumber: 61,
       columnNumber: 5
     }
   );
@@ -110,7 +112,7 @@ const Background = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 91,
+            lineNumber: 92,
             columnNumber: 7
           }
         ),
@@ -118,70 +120,70 @@ const Background = () => {
           /* @__PURE__ */ jsxDEV("defs", { children: /* @__PURE__ */ jsxDEV("filter", { id: "fog", children: [
             /* @__PURE__ */ jsxDEV("feTurbulence", { type: "fractalNoise", baseFrequency: fogBF, numOctaves: "3", seed: "7" }, void 0, false, {
               fileName: "<stdin>",
-              lineNumber: 99,
+              lineNumber: 100,
               columnNumber: 30
             }),
             /* @__PURE__ */ jsxDEV("feGaussianBlur", { stdDeviation: "16" }, void 0, false, {
               fileName: "<stdin>",
-              lineNumber: 99,
+              lineNumber: 100,
               columnNumber: 111
             })
           ] }, void 0, true, {
             fileName: "<stdin>",
-            lineNumber: 99,
+            lineNumber: 100,
             columnNumber: 13
           }) }, void 0, false, {
             fileName: "<stdin>",
-            lineNumber: 98,
+            lineNumber: 99,
             columnNumber: 11
           }),
           /* @__PURE__ */ jsxDEV("rect", { x: "0", y: "0", width: "110", height: "110", fill: "#9bd6ff", filter: "url(#fog)" }, void 0, false, {
             fileName: "<stdin>",
-            lineNumber: 101,
+            lineNumber: 102,
             columnNumber: 11
           })
         ] }, void 0, true, {
           fileName: "<stdin>",
-          lineNumber: 97,
+          lineNumber: 98,
           columnNumber: 9
         }) }, void 0, false, {
           fileName: "<stdin>",
-          lineNumber: 96,
+          lineNumber: 97,
           columnNumber: 7
         }),
         /* @__PURE__ */ jsxDEV(AbsoluteFill, { style: { pointerEvents: "none" }, children: /* @__PURE__ */ jsxDEV("svg", { width: "120%", height: "120%", viewBox: "0 0 120 120", style: { position: "absolute", top: -10, left: -10, mixBlendMode: "screen", opacity: 0.22, transform: `translate(${fogDrift * -0.04}px, ${fogDrift * 0.02}px)` }, children: [
           /* @__PURE__ */ jsxDEV("defs", { children: /* @__PURE__ */ jsxDEV("filter", { id: "fog2", children: [
             /* @__PURE__ */ jsxDEV("feTurbulence", { type: "fractalNoise", baseFrequency: fogBF * 1.2, numOctaves: "4", seed: "13" }, void 0, false, {
               fileName: "<stdin>",
-              lineNumber: 107,
+              lineNumber: 108,
               columnNumber: 31
             }),
             /* @__PURE__ */ jsxDEV("feGaussianBlur", { stdDeviation: "18" }, void 0, false, {
               fileName: "<stdin>",
-              lineNumber: 107,
+              lineNumber: 108,
               columnNumber: 119
             })
           ] }, void 0, true, {
             fileName: "<stdin>",
-            lineNumber: 107,
+            lineNumber: 108,
             columnNumber: 13
           }) }, void 0, false, {
             fileName: "<stdin>",
-            lineNumber: 106,
+            lineNumber: 107,
             columnNumber: 11
           }),
           /* @__PURE__ */ jsxDEV("rect", { x: "0", y: "0", width: "120", height: "120", fill: "#a8e4ff", filter: "url(#fog2)" }, void 0, false, {
             fileName: "<stdin>",
-            lineNumber: 109,
+            lineNumber: 110,
             columnNumber: 11
           })
         ] }, void 0, true, {
           fileName: "<stdin>",
-          lineNumber: 105,
+          lineNumber: 106,
           columnNumber: 9
         }) }, void 0, false, {
           fileName: "<stdin>",
-          lineNumber: 104,
+          lineNumber: 105,
           columnNumber: 7
         }),
         /* @__PURE__ */ jsxDEV(
@@ -195,7 +197,7 @@ const Background = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 112,
+            lineNumber: 113,
             columnNumber: 7
           }
         ),
@@ -210,17 +212,17 @@ const Background = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 118,
+            lineNumber: 119,
             columnNumber: 7
           }
         ),
         /* @__PURE__ */ jsxDEV(AbsoluteFill, { children: Array.from({ length: 180 }).map((_, i) => /* @__PURE__ */ jsxDEV(StreamParticle, { seed: `stream-${i}` }, i, false, {
           fileName: "<stdin>",
-          lineNumber: 126,
+          lineNumber: 127,
           columnNumber: 11
         })) }, void 0, false, {
           fileName: "<stdin>",
-          lineNumber: 124,
+          lineNumber: 125,
           columnNumber: 7
         })
       ]
@@ -229,7 +231,7 @@ const Background = () => {
     true,
     {
       fileName: "<stdin>",
-      lineNumber: 84,
+      lineNumber: 85,
       columnNumber: 5
     }
   );
@@ -269,7 +271,7 @@ const NullweaveText = () => {
       children: [
         /* @__PURE__ */ jsxDEV(NullweaveGradient, {}, void 0, false, {
           fileName: "<stdin>",
-          lineNumber: 170,
+          lineNumber: 171,
           columnNumber: 7
         }),
         letters.map((char, i) => {
@@ -325,7 +327,7 @@ const NullweaveText = () => {
               false,
               {
                 fileName: "<stdin>",
-                lineNumber: 203,
+                lineNumber: 204,
                 columnNumber: 13
               }
             );
@@ -388,7 +390,7 @@ const NullweaveText = () => {
             false,
             {
               fileName: "<stdin>",
-              lineNumber: 261,
+              lineNumber: 262,
               columnNumber: 11
             }
           );
@@ -399,7 +401,7 @@ const NullweaveText = () => {
     true,
     {
       fileName: "<stdin>",
-      lineNumber: 163,
+      lineNumber: 164,
       columnNumber: 5
     }
   );
@@ -444,7 +446,7 @@ const Particle = ({ seed }) => {
     false,
     {
       fileName: "<stdin>",
-      lineNumber: 325,
+      lineNumber: 326,
       columnNumber: 5
     }
   );
@@ -452,11 +454,11 @@ const Particle = ({ seed }) => {
 const Particles = () => {
   return /* @__PURE__ */ jsxDEV(AbsoluteFill, { style: { transform: "translateY(-50px)" }, children: Array.from({ length: 50 }).map((_, i) => /* @__PURE__ */ jsxDEV(Particle, { seed: `particle-${i}` }, i, false, {
     fileName: "<stdin>",
-    lineNumber: 344,
+    lineNumber: 345,
     columnNumber: 9
   })) }, void 0, false, {
     fileName: "<stdin>",
-    lineNumber: 342,
+    lineNumber: 343,
     columnNumber: 5
   });
 };
@@ -486,7 +488,7 @@ const ImpactObject = () => {
     false,
     {
       fileName: "<stdin>",
-      lineNumber: 361,
+      lineNumber: 362,
       columnNumber: 5
     }
   );
@@ -595,7 +597,7 @@ const StudioText = () => {
               false,
               {
                 fileName: "<stdin>",
-                lineNumber: 468,
+                lineNumber: 469,
                 columnNumber: 13
               }
             );
@@ -605,7 +607,7 @@ const StudioText = () => {
         false,
         {
           fileName: "<stdin>",
-          lineNumber: 432,
+          lineNumber: 433,
           columnNumber: 7
         }
       )
@@ -614,11 +616,39 @@ const StudioText = () => {
     false,
     {
       fileName: "<stdin>",
-      lineNumber: 421,
+      lineNumber: 422,
       columnNumber: 5
     }
   );
 };
+const FontLoader = ({ children }) => {
+  const [handle] = React.useState(() => delayRender("Loading Exo2 font"));
+  React.useEffect(() => {
+    const font = new FontFace(
+      "Exo2",
+      "url('https://fonts.gstatic.com/s/exo2/v21/7cH1v4okm5zmbvwk_Q4.woff2') format('woff2')",
+      { weight: "900", style: "normal" }
+    );
+    font.load().then(() => {
+      document.fonts.add(font);
+      continueRender(handle);
+    }).catch(() => continueRender(handle));
+  }, [handle]);
+  return /* @__PURE__ */ jsxDEV(Fragment, { children }, void 0, false, {
+    fileName: "<stdin>",
+    lineNumber: 507,
+    columnNumber: 10
+  });
+};
+const IntroWithFont = () => /* @__PURE__ */ jsxDEV(FontLoader, { children: /* @__PURE__ */ jsxDEV(NullweaveIntro, {}, void 0, false, {
+  fileName: "<stdin>",
+  lineNumber: 512,
+  columnNumber: 5
+}) }, void 0, false, {
+  fileName: "<stdin>",
+  lineNumber: 511,
+  columnNumber: 3
+});
 const NullweaveIntro = () => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
@@ -642,7 +672,7 @@ const NullweaveIntro = () => {
       children: [
         /* @__PURE__ */ jsxDEV(Background, {}, void 0, false, {
           fileName: "<stdin>",
-          lineNumber: 516,
+          lineNumber: 539,
           columnNumber: 7
         }),
         /* @__PURE__ */ jsxDEV(
@@ -657,26 +687,26 @@ const NullweaveIntro = () => {
             children: [
               /* @__PURE__ */ jsxDEV(NullweaveText, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 525,
+                lineNumber: 548,
                 columnNumber: 9
               }),
               /* @__PURE__ */ jsxDEV(StudioText, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 526,
+                lineNumber: 549,
                 columnNumber: 9
               }),
               /* @__PURE__ */ jsxDEV(Sequence, { from: impactFrame, children: /* @__PURE__ */ jsxDEV(Particles, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 529,
+                lineNumber: 552,
                 columnNumber: 11
               }) }, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 528,
+                lineNumber: 551,
                 columnNumber: 9
               }),
               /* @__PURE__ */ jsxDEV(ImpactObject, {}, void 0, false, {
                 fileName: "<stdin>",
-                lineNumber: 531,
+                lineNumber: 554,
                 columnNumber: 9
               })
             ]
@@ -685,7 +715,7 @@ const NullweaveIntro = () => {
           true,
           {
             fileName: "<stdin>",
-            lineNumber: 517,
+            lineNumber: 540,
             columnNumber: 7
           }
         ),
@@ -701,7 +731,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 534,
+            lineNumber: 557,
             columnNumber: 7
           }
         ),
@@ -716,7 +746,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 540,
+            lineNumber: 563,
             columnNumber: 7
           }
         ),
@@ -731,7 +761,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 545,
+            lineNumber: 568,
             columnNumber: 7
           }
         ),
@@ -747,7 +777,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 550,
+            lineNumber: 573,
             columnNumber: 7
           }
         ),
@@ -762,7 +792,7 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 556,
+            lineNumber: 579,
             columnNumber: 7
           }
         )
@@ -772,11 +802,12 @@ const NullweaveIntro = () => {
     true,
     {
       fileName: "<stdin>",
-      lineNumber: 511,
+      lineNumber: 534,
       columnNumber: 5
     }
   );
 };
 export {
+  IntroWithFont,
   NullweaveIntro
 };
