@@ -30,6 +30,69 @@ const textBaseStyle = {
     0 0 40px #00aaff
   `
 };
+const DustParticle = ({ seed }) => {
+  const { durationInFrames } = useVideoConfig();
+  const frame = useCurrentFrame();
+  const life = durationInFrames;
+  const progress = frame / life;
+  const initialX = random(seed + "ix") * 2e3 - 1e3;
+  const initialY = random(seed + "iy") * 1500 - 200;
+  const speedX = (random(seed + "sx") - 0.5) * 80;
+  const speedY = (random(seed + "sy") - 0.5) * 80;
+  const x = initialX + progress * speedX;
+  const y = initialY + progress * speedY;
+  const opacity = random(seed + "op") * 0.1 + Math.sin(progress * Math.PI) * (random(seed + "op2") * 0.1);
+  const size = random(seed + "size") * 2 + 1;
+  return /* @__PURE__ */ jsxDEV(
+    "div",
+    {
+      style: {
+        position: "absolute",
+        left: x,
+        top: y,
+        width: size,
+        height: size,
+        borderRadius: "50%",
+        backgroundColor: "white",
+        opacity
+      }
+    },
+    void 0,
+    false,
+    {
+      fileName: "<stdin>",
+      lineNumber: 56,
+      columnNumber: 3
+    }
+  );
+};
+const Background = () => {
+  return /* @__PURE__ */ jsxDEV(
+    AbsoluteFill,
+    {
+      style: {
+        background: "radial-gradient(circle, #222 0%, #000 100%)",
+        overflow: "hidden"
+      },
+      children: /* @__PURE__ */ jsxDEV(AbsoluteFill, { style: { transform: "translateZ(-500px)" }, children: Array.from({ length: 200 }).map((_, i) => /* @__PURE__ */ jsxDEV(DustParticle, { seed: `dust-${i}` }, i, false, {
+        fileName: "<stdin>",
+        lineNumber: 81,
+        columnNumber: 6
+      })) }, void 0, false, {
+        fileName: "<stdin>",
+        lineNumber: 79,
+        columnNumber: 4
+      })
+    },
+    void 0,
+    false,
+    {
+      fileName: "<stdin>",
+      lineNumber: 73,
+      columnNumber: 3
+    }
+  );
+};
 const NullweaveText = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -48,6 +111,12 @@ const NullweaveText = () => {
     fps,
     config: { damping: 10, stiffness: 100 }
   });
+  const impactJitterProgress = spring({
+    frame: frame - impactFrame,
+    fps,
+    durationInFrames: 15,
+    config: { damping: 5, stiffness: 500 }
+  });
   return /* @__PURE__ */ jsxDEV(
     "div",
     {
@@ -61,6 +130,13 @@ const NullweaveText = () => {
         const isNul = i < 3;
         const isWeave = i > 3;
         let letterTransform = "none";
+        const jitterX = (random("jitterX" + i) - 0.5) * interpolate(impactJitterProgress, [0, 1], [10, 0], {
+          extrapolateRight: "clamp"
+        });
+        const jitterY = (random("jitterY" + i) - 0.5) * interpolate(impactJitterProgress, [0, 1], [10, 0], {
+          extrapolateRight: "clamp"
+        });
+        let jitterTransform = `translateX(${jitterX}px) translateY(${jitterY}px)`;
         if (isFallingL) {
           const fallProgress = spring({
             frame: frame - impactFrame - 5,
@@ -92,7 +168,7 @@ const NullweaveText = () => {
             false,
             {
               fileName: "<stdin>",
-              lineNumber: 89,
+              lineNumber: 161,
               columnNumber: 7
             }
           );
@@ -128,7 +204,7 @@ const NullweaveText = () => {
               ...textBaseStyle,
               fontSize: 100,
               display: "inline-block",
-              transform: letterTransform,
+              transform: `${letterTransform} ${jitterTransform}`,
               transformOrigin: i < 3 ? "bottom right" : "bottom left"
             },
             children: char
@@ -137,7 +213,7 @@ const NullweaveText = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 131,
+            lineNumber: 203,
             columnNumber: 6
           }
         );
@@ -147,7 +223,7 @@ const NullweaveText = () => {
     false,
     {
       fileName: "<stdin>",
-      lineNumber: 58,
+      lineNumber: 118,
       columnNumber: 3
     }
   );
@@ -191,7 +267,7 @@ const Particle = ({ seed }) => {
     false,
     {
       fileName: "<stdin>",
-      lineNumber: 178,
+      lineNumber: 250,
       columnNumber: 3
     }
   );
@@ -199,13 +275,54 @@ const Particle = ({ seed }) => {
 const Particles = () => {
   return /* @__PURE__ */ jsxDEV(AbsoluteFill, { children: Array.from({ length: 50 }).map((_, i) => /* @__PURE__ */ jsxDEV(Particle, { seed: `particle-${i}` }, i, false, {
     fileName: "<stdin>",
-    lineNumber: 197,
+    lineNumber: 269,
     columnNumber: 5
   })) }, void 0, false, {
     fileName: "<stdin>",
-    lineNumber: 195,
+    lineNumber: 267,
     columnNumber: 3
   });
+};
+const Spark = ({ seed }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const life = 20;
+  const progress = spring({
+    frame,
+    fps,
+    durationInFrames: life,
+    config: { damping: 200 }
+  });
+  if (progress === 0 || progress === 1) return null;
+  const angle = random(seed + "angle") * Math.PI * 2;
+  const distance = random(seed + "dist") * 200 + 50;
+  const endX = Math.cos(angle) * distance;
+  const endY = Math.sin(angle) * distance;
+  const currentX = interpolate(progress, [0, 1], [0, endX]);
+  const currentY = interpolate(progress, [0, 1], [0, endY]);
+  const scale = interpolate(progress, [0, 1], [1, 0]);
+  const opacity = interpolate(progress, [0, 0.5, 1], [0, 1, 0]);
+  return /* @__PURE__ */ jsxDEV(
+    "div",
+    {
+      style: {
+        position: "absolute",
+        width: 8,
+        height: 2,
+        backgroundColor: "#00aaff",
+        opacity,
+        transform: `translateX(${currentX}px) translateY(${currentY}px) scaleX(${scale}) rotate(${angle * (180 / Math.PI)}deg)`,
+        boxShadow: "0 0 10px #00aaff"
+      }
+    },
+    void 0,
+    false,
+    {
+      fileName: "<stdin>",
+      lineNumber: 301,
+      columnNumber: 3
+    }
+  );
 };
 const StudioText = () => {
   const frame = useCurrentFrame();
@@ -225,36 +342,66 @@ const StudioText = () => {
   const scale = interpolate(progress, [0, 1], [0.8, 1]);
   const glowRadius = interpolate(flash, [0, 0.5, 1], [50, 100, 20]);
   const glowOpacity = interpolate(flash, [0, 0.5, 1], [0, 1, 0.7]);
+  const showSparks = frame < 30;
   return /* @__PURE__ */ jsxDEV(
     "div",
     {
       style: {
-        ...textBaseStyle,
-        fontSize: 80,
         marginTop: "40px",
-        transform: `scale(${scale})`,
-        opacity,
-        textShadow: `
+        position: "relative",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      },
+      children: [
+        /* @__PURE__ */ jsxDEV(
+          "div",
+          {
+            style: {
+              ...textBaseStyle,
+              fontSize: 80,
+              transform: `scale(${scale})`,
+              opacity,
+              textShadow: `
           0 0 5px rgba(255,255,255, ${glowOpacity * 0.5}),
           0 0 10px rgba(255,255,255, ${glowOpacity * 0.5}),
           0 0 ${glowRadius}px #00aaff,
           0 0 ${glowRadius + 10}px #00aaff
         `
-      },
-      children: "STUDIO"
+            },
+            children: "STUDIO"
+          },
+          void 0,
+          false,
+          {
+            fileName: "<stdin>",
+            lineNumber: 349,
+            columnNumber: 4
+          }
+        ),
+        showSparks && /* @__PURE__ */ jsxDEV(AbsoluteFill, { children: Array.from({ length: 30 }).map((_, i) => /* @__PURE__ */ jsxDEV(Spark, { seed: `spark-${i}` }, i, false, {
+          fileName: "<stdin>",
+          lineNumber: 368,
+          columnNumber: 7
+        })) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 366,
+          columnNumber: 5
+        })
+      ]
     },
     void 0,
-    false,
+    true,
     {
       fileName: "<stdin>",
-      lineNumber: 224,
+      lineNumber: 340,
       columnNumber: 3
     }
   );
 };
 const NullweaveIntro = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, durationInFrames } = useVideoConfig();
   const impactFrame = 40;
   const studioFrame = 90;
   const shakeProgress = spring({
@@ -264,45 +411,104 @@ const NullweaveIntro = () => {
   });
   const shakeX = Math.sin(shakeProgress * Math.PI * 4) * interpolate(shakeProgress, [0, 1], [10, 0]);
   const shakeY = Math.cos(shakeProgress * Math.PI * 6) * interpolate(shakeProgress, [0, 1], [10, 0]);
+  const zoom = interpolate(frame, [0, durationInFrames], [1.2, 1]);
+  const flashOpacity = interpolate(
+    frame,
+    [impactFrame, impactFrame + 3, impactFrame + 15],
+    [0, 1, 0],
+    { extrapolateRight: "clamp" }
+  );
   return /* @__PURE__ */ jsxDEV(
     AbsoluteFill,
     {
       style: {
-        background: "radial-gradient(circle, #222 0%, #000 100%)"
+        backgroundColor: "#000"
       },
       children: [
+        /* @__PURE__ */ jsxDEV(Background, {}, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 410,
+          columnNumber: 4
+        }),
         /* @__PURE__ */ jsxDEV(
-          "div",
+          AbsoluteFill,
           {
             style: {
-              ...containerStyle,
-              width: "100%",
-              height: "100%",
-              transform: `translateX(${shakeX}px) translateY(${shakeY}px)`
+              transform: `scale(${zoom})`
             },
-            children: [
-              /* @__PURE__ */ jsxDEV(NullweaveText, {}, void 0, false, {
+            children: /* @__PURE__ */ jsxDEV(
+              "div",
+              {
+                style: {
+                  ...containerStyle,
+                  width: "100%",
+                  height: "100%",
+                  transform: `translateX(${shakeX}px) translateY(${shakeY}px)`
+                },
+                children: [
+                  /* @__PURE__ */ jsxDEV(NullweaveText, {}, void 0, false, {
+                    fileName: "<stdin>",
+                    lineNumber: 424,
+                    columnNumber: 6
+                  }),
+                  frame >= studioFrame && /* @__PURE__ */ jsxDEV(StudioText, {}, "studio", false, {
+                    fileName: "<stdin>",
+                    lineNumber: 426,
+                    columnNumber: 7
+                  }),
+                  frame >= impactFrame && frame < impactFrame + 60 && /* @__PURE__ */ jsxDEV(Particles, {}, void 0, false, {
+                    fileName: "<stdin>",
+                    lineNumber: 429,
+                    columnNumber: 59
+                  })
+                ]
+              },
+              void 0,
+              true,
+              {
                 fileName: "<stdin>",
-                lineNumber: 278,
+                lineNumber: 416,
                 columnNumber: 5
-              }),
-              frame >= studioFrame && /* @__PURE__ */ jsxDEV(StudioText, {}, void 0, false, {
-                fileName: "<stdin>",
-                lineNumber: 279,
-                columnNumber: 30
-              }),
-              frame >= impactFrame && frame < impactFrame + 60 && /* @__PURE__ */ jsxDEV(Particles, {}, void 0, false, {
-                fileName: "<stdin>",
-                lineNumber: 281,
-                columnNumber: 58
-              })
-            ]
+              }
+            )
           },
           void 0,
-          true,
+          false,
           {
             fileName: "<stdin>",
-            lineNumber: 270,
+            lineNumber: 411,
+            columnNumber: 4
+          }
+        ),
+        /* @__PURE__ */ jsxDEV(
+          AbsoluteFill,
+          {
+            style: {
+              background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 60%)",
+              opacity: flashOpacity
+            }
+          },
+          void 0,
+          false,
+          {
+            fileName: "<stdin>",
+            lineNumber: 433,
+            columnNumber: 4
+          }
+        ),
+        /* @__PURE__ */ jsxDEV(
+          Audio,
+          {
+            src: staticFile("whoosh.mp3"),
+            startFrom: impactFrame - 20,
+            endAt: impactFrame,
+            volume: 0.7
+          },
+          void 0,
+          false,
+          {
+            fileName: "<stdin>",
+            lineNumber: 441,
             columnNumber: 4
           }
         ),
@@ -317,7 +523,53 @@ const NullweaveIntro = () => {
           false,
           {
             fileName: "<stdin>",
-            lineNumber: 283,
+            lineNumber: 447,
+            columnNumber: 4
+          }
+        ),
+        /* @__PURE__ */ jsxDEV(
+          Audio,
+          {
+            src: staticFile("shatter.mp3"),
+            startFrom: impactFrame,
+            volume: 0.6
+          },
+          void 0,
+          false,
+          {
+            fileName: "<stdin>",
+            lineNumber: 452,
+            columnNumber: 4
+          }
+        ),
+        /* @__PURE__ */ jsxDEV(
+          Audio,
+          {
+            src: staticFile("tumble.mp3"),
+            startFrom: impactFrame + 8,
+            endAt: impactFrame + 50,
+            volume: 0.4
+          },
+          void 0,
+          false,
+          {
+            fileName: "<stdin>",
+            lineNumber: 457,
+            columnNumber: 4
+          }
+        ),
+        /* @__PURE__ */ jsxDEV(
+          Audio,
+          {
+            src: staticFile("studio_reveal.mp3"),
+            startFrom: studioFrame,
+            volume: 0.7
+          },
+          void 0,
+          false,
+          {
+            fileName: "<stdin>",
+            lineNumber: 463,
             columnNumber: 4
           }
         )
@@ -327,7 +579,7 @@ const NullweaveIntro = () => {
     true,
     {
       fileName: "<stdin>",
-      lineNumber: 264,
+      lineNumber: 405,
       columnNumber: 3
     }
   );
