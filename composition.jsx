@@ -407,27 +407,27 @@ const ImpactObject = () => {
   const preX = interpolate(frame, [20, impactFrame], [-100, hitX], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const preY = interpolate(frame, [20, impactFrame], [-1e3, -40], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const postX = hitX + Math.max(0, rel) * 7;
-  const amp0 = 120;
+  const amp0 = 220;
   const decay = Math.exp(-Math.max(0, rel) / 60);
-  const postY = -40 - Math.abs(Math.sin(Math.max(0, rel) * 0.18 * Math.PI)) * amp0 * decay;
+  const postY = -140 - Math.abs(Math.sin(Math.max(0, rel) * 0.22 * Math.PI)) * amp0 * decay;
   const x = frame < impactFrame ? preX : postX;
   const y = frame < impactFrame ? preY : postY;
-  const tailLen = frame < impactFrame ? 280 : Math.max(160 - rel * 3, 60);
-  const tailOpacity = frame < impactFrame ? 0.8 : Math.max(0.2, 0.7 * decay);
+  const tailLen = frame < impactFrame ? 360 : Math.max(200 - rel * 2, 80);
+  const tailOpacity = frame < impactFrame ? 0.85 : Math.max(0.25, 0.7 * decay);
   return /* @__PURE__ */ jsxDEV(Fragment, { children: [
     /* @__PURE__ */ jsxDEV(
       "div",
       {
         style: {
           position: "absolute",
-          width: 8,
+          width: 12,
           height: tailLen,
-          borderRadius: 8,
-          background: "linear-gradient(180deg, rgba(0,255,255,0.85) 0%, rgba(159,0,255,0.5) 30%, rgba(0,0,0,0) 100%)",
+          borderRadius: 999,
+          background: "linear-gradient(180deg, rgba(0,255,255,0.9) 0%, rgba(159,0,255,0.55) 28%, rgba(0,0,0,0) 100%)",
           boxShadow: "0 0 30px rgba(0,255,255,0.6), 0 0 60px rgba(159,0,255,0.4)",
           filter: "blur(1px)",
           opacity: tailOpacity,
-          transform: `translate(${x}px, ${y - tailLen}px) rotate(15deg)`,
+          transform: `translate(${x}px, ${y - tailLen}px) rotate(28deg)`,
           zIndex: 4
         }
       },
@@ -444,12 +444,12 @@ const ImpactObject = () => {
       {
         style: {
           position: "absolute",
-          width: 60,
-          height: 60,
-          borderRadius: "50%",
-          background: "radial-gradient(circle at 40% 40%, rgba(255,255,255,1) 0%, rgba(0,255,255,1) 35%, rgba(0,255,255,0.2) 70%, rgba(0,255,255,0) 85%)",
-          boxShadow: "0 0 30px rgba(0,255,255,0.9), 0 0 80px rgba(159,0,255,0.6)",
-          transform: `translate(${x}px, ${y}px)`,
+          width: 88,
+          height: 54,
+          borderRadius: "50% / 60%",
+          background: "radial-gradient(circle at 40% 40%, rgba(255,255,255,1) 0%, rgba(0,255,255,1) 35%, rgba(0,255,255,0.25) 70%, rgba(0,255,255,0) 85%)",
+          boxShadow: "0 0 40px rgba(0,255,255,0.95), 0 0 100px rgba(159,0,255,0.65)",
+          transform: `translate(${x}px, ${y}px) rotate(12deg)`,
           zIndex: 5
         }
       },
